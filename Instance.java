@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
 public class Instance {
-  float[] weights;
-  int[] indices;
-  int size;
-  boolean label;
+  protected float[] weights;
+  protected int[] indices;
+  protected int size;
+  protected boolean label;
 
   public Instance (Instance i) {
     this.size = i.size;
@@ -14,6 +14,11 @@ public class Instance {
   }
 
   public Instance (float[] weights, int[] indices, boolean label) {
+    this.set(weights, indices, label);
+  }
+
+
+  public void set(float[] weights, int[] indices, boolean label) {
     if (weights.length != indices.length) {
       throw new RuntimeException("Instance creation error : weight length " + weights.length + ", indices.length " + indices.length);
     }
@@ -21,6 +26,25 @@ public class Instance {
     this.weights = Arrays.copyOf(weights, size);
     this.indices = Arrays.copyOf(indices, size);
     this.label = label;
+  }
+
+  // getter method
+  public float getWeight(int i) {
+    return this.weights[i];
+  }
+  public float getWeightByIndex(int i) {
+    int arrayInd = Arrays.binarySearch(this.indices, i);
+    if (arrayInd < 0) return 0;
+    return this.weights[arrayInd];
+  }
+  public int getIndex(int i) {
+    return this.indices[i];
+  }
+  public boolean getLabel() {
+    return this.label;
+  }
+  public int getSize() {
+    return size;
   }
 }
 
