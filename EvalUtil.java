@@ -2,7 +2,7 @@ import java.util.List;
 
 public class EvalUtil {
 
-  public float calcAccuracy(List<PredictAndLabel> list) {
+  public static float calcAccuracy(List<PredictAndLabel> list) {
     int size = list.size();
     float denom = (float) size;
     int numer = 0;
@@ -18,7 +18,7 @@ public class EvalUtil {
   /**
    * AUCなどを計算するためのデータ
    */
-  public class ScoreAndLabel {
+  public static class ScoreAndLabel {
     private float score;
     private boolean label;
 
@@ -34,7 +34,7 @@ public class EvalUtil {
   /**
    * Accuracyなどを計算するためのデータ
    */
-  public class PredictAndLabel {
+  public static class PredictAndLabel {
     private boolean predict;
     private boolean label;
 

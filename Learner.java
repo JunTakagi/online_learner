@@ -58,6 +58,12 @@ public abstract class Learner {
   }
 
   /**
+   * パラメータなどのセットアップメソッド
+   * デフォルトでは何もしない
+   */
+  public void setup(String[] args) {}
+
+  /**
    * @return 予測スコア。デフォルトでは内積
    */
   public float score(Instance i) {
