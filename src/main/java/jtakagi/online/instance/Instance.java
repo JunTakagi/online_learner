@@ -30,6 +30,14 @@ public class Instance {
     this.label = label;
   }
 
+  public boolean setByIndex(int index, float weight) {
+    if (index > size) {
+      this.weights[index] = weight;
+      return true;
+    }
+    return false;
+  }
+
   /**
    * 2normの2条を計算する
    */
