@@ -30,12 +30,18 @@ public class Instance {
     this.label = label;
   }
 
-  public float norm() {
-    float norm = 0.0f;
+  /**
+   * 2normの2条を計算する
+   */
+  public float sq2() {
+    float sq2 = 0.0f;
     for (int i=0; i<size; ++i) {
-      norm += weights[i] * weights[i];
+      sq2 += weights[i] * weights[i];
     }
-    return norm;
+    return sq2;
+  }
+  public float norm() {
+    return (float)Math.sqrt(this.sq2());
   }
 
   public void scale(float factor) {
