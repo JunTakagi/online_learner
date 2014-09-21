@@ -58,6 +58,21 @@ public abstract class Learner {
   }
 
   /**
+   * スパースベクトルとの足し算
+   */
+  public void add(Instance i) {
+    int size = i.getSize();
+    if (i.getIndex(size-1) > weights.length) {
+      throw new RuntimeException(i.getSize() + " is over the learner size " + weights.length);
+    }
+
+    for (int ind=0; ind<size; ind++) {
+      weights[i.getIndex(ind)] += i.getWeight(ind);
+    }
+  }
+
+
+  /**
    * パラメータなどのセットアップメソッド
    * デフォルトでは何もしない
    */

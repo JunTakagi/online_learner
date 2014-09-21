@@ -13,7 +13,7 @@ public class LibSVMInstanceReader extends InstanceReader {
 
 
   public Instance createInstance(String line) throws NumberFormatException {
-    StringTokenizer st = new StringTokenizer(" \t", line);
+    StringTokenizer st = new StringTokenizer(line, " \t");
     if (! st.hasMoreTokens()) {
       throw new RuntimeException("Lable not Found");
     }

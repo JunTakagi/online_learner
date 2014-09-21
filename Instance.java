@@ -28,6 +28,20 @@ public class Instance {
     this.label = label;
   }
 
+  public float norm() {
+    float norm = 0.0f;
+    for (int i=0; i<size; ++i) {
+      norm += weights[i] * weights[i];
+    }
+    return norm;
+  }
+
+  public void scale(float factor) {
+    for (int i=0; i<size; ++i) {
+      weights[i] *= factor;
+    }
+  }
+
   // getter method
   public float getWeight(int i) {
     return this.weights[i];
@@ -45,6 +59,13 @@ public class Instance {
   }
   public int getSize() {
     return size;
+  }
+
+  // debug
+  public void dump() {
+    for (int i=0; i<size; ++i) {
+      System.out.println(indices[i] + ":" + weights[i]);
+    }
   }
 }
 
