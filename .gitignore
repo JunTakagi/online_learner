@@ -1,3 +1,4 @@
 testdata
+/target
 *.class
 *.swp

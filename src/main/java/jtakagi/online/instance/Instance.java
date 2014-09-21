@@ -1,3 +1,5 @@
+package jtakagi.online.instance;
+
 import java.util.Arrays;
 
 public class Instance {

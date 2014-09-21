@@ -1,5 +1,6 @@
+package jtakagi.online.learner;
 
-
+import jtakagi.online.instance.Instance;
 
 public class PassiveAggressive extends Learner {
   public PassiveAggressive(int size) {
