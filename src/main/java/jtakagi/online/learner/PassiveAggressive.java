@@ -16,7 +16,7 @@ public class PassiveAggressive extends Learner {
     float loss = 1.0f - y * this.dot(i);
     if (loss > 0.0f) {
       Instance delta = new Instance(i);
-      float factor = (loss * y) / i.norm();
+      float factor = (loss * y) / i.sq2();
       delta.scale(factor);
       this.add(delta);
       return true;
