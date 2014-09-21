@@ -1,7 +1,12 @@
+package jtakagi.online.experiment;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import jtakagi.online.instance.*;
+import jtakagi.online.learner.*;
+import jtakagi.online.evaluate.*;
 
 public class Experiment {
   public static void main(String args[]) throws Exception {
