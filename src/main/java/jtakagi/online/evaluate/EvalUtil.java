@@ -23,11 +23,9 @@ public class EvalUtil {
 
   /**
    * aucを計算する
+   * 面倒臭いから台形近似とかしない系プログラム
    */
   public static float calcAUC(List<ScoreAndLabel> list) {
-    boolean prevLabel = false;
-    int prevPos = 0;
-    int  prevNeg = 0;
     int neg = 0;
     int pos = 0;
 
@@ -42,39 +40,15 @@ public class EvalUtil {
 
     float auc = 0.0f;
     for (ScoreAndLabel sal : list) {
-      System.out.println(sal.getLabel() + " " + sal.getScore());
       boolean label = sal.getLabel();
       if (label) {
-        if (!prevLabel) {
-          prevPos = pos;
-        }
         pos++;
-        prevLabel = label;
       } else {
-        if (prevLabel) {
-          int denom = neg - prevNeg;
-          if (denom != 0) {
-            auc += ((float)(prevPos + pos)) * ((float)denom);
-            prevNeg = neg;
-          }
-        }
+        auc += (float) pos;
         neg++;
-        prevLabel = label;
       }
     }
-    if (prevLabel) {
-      System.out.println("koko1");
-      auc += ((float)(prevPos + pos)) * ((float)(neg - prevNeg));
-      prevNeg = neg;
-    } else {
-      System.out.println("koko2");
-      System.out.println(neg + " " + prevNeg);
-      System.out.println(pos + " " + neg + " " + auc);
-      auc += ((float)(pos << 1)) * ((float)(neg - prevNeg));
-      prevNeg = neg;
-    }
-    System.out.println(pos + " " + neg + " " + auc);
-    auc /= (float)(pos * neg * 2);
+    auc /= (float)(pos * neg);
     return auc;
   }
 
@@ -121,9 +95,9 @@ public class EvalUtil {
     l.add(new ScoreAndLabel(0.5f, false));
     l.add(new ScoreAndLabel(0.6f, false));
     l.add(new ScoreAndLabel(0.7f, false));
-    l.add(new ScoreAndLabel(0.0f, true));
-    l.add(new ScoreAndLabel(0.0f, true));
-    l.add(new ScoreAndLabel(0.0f, true));
+    l.add(new ScoreAndLabel(0.8f, true));
+    l.add(new ScoreAndLabel(0.9f, true));
+    l.add(new ScoreAndLabel(1.0f, true));
     System.out.println(calcAUC(l));
   }
 
