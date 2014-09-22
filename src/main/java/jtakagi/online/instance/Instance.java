@@ -79,9 +79,11 @@ public class Instance {
 
   // debug
   public void dump() {
+    System.out.print(label);
     for (int i=0; i<size; ++i) {
-      System.out.println(indices[i] + ":" + weights[i]);
+      System.out.print(" " + indices[i] + ":" + weights[i]);
     }
+    System.out.println();
   }
 }
 

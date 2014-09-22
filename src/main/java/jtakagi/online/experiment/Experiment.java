@@ -81,14 +81,19 @@ public class Experiment {
     scores = new ArrayList<EvalUtil.ScoreAndLabel>();
     for (int i=0; i<repeat; ++i) {
       trainset.begin(train);
+      int updateCount = 0;
       while ((instance = trainset.getNext()) != null) {
-        learner.update(instance);
+        if(learner.update(instance)) {
+          ++updateCount;
+        }
       }
+      //learner.dump(); // for debug
       clearEval();
       testset.begin(test);
       while ((instance = testset.getNext()) != null) {
         eval(instance);
       }
+      System.out.println("Update Counts : " + updateCount);
       outputEval(i);
     }
   }

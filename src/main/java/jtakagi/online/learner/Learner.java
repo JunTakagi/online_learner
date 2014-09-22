@@ -55,7 +55,7 @@ public abstract class Learner {
 
     float dotProduct = 0.0f;
     for (int ind=0; ind<size; ind++) {
-      dotProduct += weights[i.getIndex(ind)] + i.getWeight(ind);
+      dotProduct += weights[i.getIndex(ind)] * i.getWeight(ind);
     }
     return dotProduct;
   }
@@ -93,5 +93,14 @@ public abstract class Learner {
    */
   public boolean predict(Instance i) {
     return (score(i) > 0.0f);
+  }
+
+  public void dump() {
+    for (int i=0; i<weights.length; ++i) {
+      if (weights[i] != 0.0f) {
+        System.out.print(i + ":" + weights[i] + " ");
+      }
+    }
+    System.out.println();
   }
 }
