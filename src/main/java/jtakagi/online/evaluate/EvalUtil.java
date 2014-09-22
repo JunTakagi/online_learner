@@ -16,6 +16,7 @@ public class EvalUtil {
     int numer = 0;
     for (PredictAndLabel pal : list) {
       if (pal.getPredict() == pal.getLabel()) { ++numer; }
+      //System.out.println(pal.getLabel() + " at " + pal.getPredict()); // for debug
     }
     float accuracy = ((float) numer) / denom;
     return accuracy;
@@ -40,6 +41,7 @@ public class EvalUtil {
 
     float auc = 0.0f;
     for (ScoreAndLabel sal : list) {
+      //System.out.println(sal.getLabel() + " at " + sal.getScore()); // for debug
       boolean label = sal.getLabel();
       if (label) {
         pos++;

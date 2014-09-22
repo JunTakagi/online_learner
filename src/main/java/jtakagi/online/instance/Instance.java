@@ -30,6 +30,14 @@ public class Instance {
     this.label = label;
   }
 
+  public boolean setByIndex(int index, float weight) {
+    if (index > size) {
+      this.weights[index] = weight;
+      return true;
+    }
+    return false;
+  }
+
   /**
    * 2normの2条を計算する
    */
@@ -71,9 +79,11 @@ public class Instance {
 
   // debug
   public void dump() {
+    System.out.print(label);
     for (int i=0; i<size; ++i) {
-      System.out.println(indices[i] + ":" + weights[i]);
+      System.out.print(" " + indices[i] + ":" + weights[i]);
     }
+    System.out.println();
   }
 }
 
