@@ -21,6 +21,10 @@ public class Experiment {
   public static List<EvalUtil.PredictAndLabel> predictions;
   public static List<EvalUtil.ScoreAndLabel> scores;
 
+  public static void usage() {
+    System.out.println("Usage: java -cp target/online-0.0.1.jar jtakagi.online.experiment.Experiment Evaluation-Method Traindata Testdata Repeat-Number LearningMethod Additional-Options-Of-Learner");
+    System.out.println("Evaluation Method : auc, accuracy");
+  }
 
   public static void parseMode(String modeStr) {
     if (modeStr.equals(AUC_MODE_STR)) {
@@ -28,6 +32,7 @@ public class Experiment {
     } else if (modeStr.equals(ACCURACY_MODE_STR)) {
       mode = ACCURACY_MODE;
     } else {
+      usage();
       throw new RuntimeException("mode is not specified : " + modeStr);
     }
   }
