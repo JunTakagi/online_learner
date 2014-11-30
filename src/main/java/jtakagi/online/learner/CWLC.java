@@ -40,6 +40,7 @@ public class CWLC extends Learner {
   public void setup(String[] args) throws NumberFormatException {
     if (args.length < 1) {
       System.err.println("Warning : phi is not setted, use default phi = " + DEFAULT_PHI);
+      return;
     }
     this.phi = Float.parseFloat(args[0]);
     if (args.length >= 2) {
